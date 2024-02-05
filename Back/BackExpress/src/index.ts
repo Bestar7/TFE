@@ -1,15 +1,19 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, Router } from "express"
+import cors from "cors"
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config()
 
 const app: Express = express();
-const port = process.env.PORT || 3001;
+const port: string|number = process.env.PORT || 3001
+const appRouter : Router = require('./routes/routes')
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + oo TypeScript Server");
-});
+app.use(cors()); // allow cors policy
+app.use(express.json()); // parse body from json to js
+app.use('/', appRouter)
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+  console.log(`[server]: Server is running at http://localhost:${port}`)
+})
+
+module.exports = app
