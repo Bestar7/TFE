@@ -1,0 +1,53 @@
+@port = 3003
+@url = http://localhost:{{port}}/users
+/// ATTENTION : no trailing commas (,)
+
+###test
+GET {{http://localhost:{{port}}}}
+
+#_____CREATE
+### login One
+POST {{url}}/login
+Content-Type: application/json
+
+{
+    "email":"table",
+    "password":"an old blue table",
+    "name":"Tommy"
+}
+
+### Create One
+POST {{url}}
+Content-Type: application/json
+
+{
+    "email":"table",
+    "password":"an old blue table",
+    "name":"Tommy"
+}
+
+
+
+#_____READ
+### Read All
+GET {{url}}
+
+### Read One
+GET {{url}}/1
+
+#_____UPDATE
+### Update One
+PUT {{url}}/2
+Content-Type: application/json
+
+{
+    "email":"table",
+    "password":"an old blue table",
+    "name":"Tom"
+}
+
+#_____DELETE
+### Delete All
+DELETE {{url}}
+### Delete One
+DELETE {{url}}/2

@@ -1,0 +1,38 @@
+@port = 3003
+@url = http://localhost:{{port}}/items
+/// ATTENTION : no trailing commas (,)
+
+#_____CREATE
+### Create One
+POST {{url}}
+Content-Type: application/json
+
+{
+    "categorie":"table",
+    "description":"an old blue table",
+    "price":42
+}
+
+#_____READ
+### Read All
+GET {{url}}
+
+### Read One
+GET {{url}}/2
+
+#_____UPDATE
+### Update One
+PUT {{url}}/2
+Content-Type: application/json
+
+{
+    "categorie":"table up",
+    "description":"an old up dog",
+    "price":420
+}
+
+#_____DELETE
+### Delete All
+DELETE {{url}}
+### Delete One
+DELETE {{url}}/2
