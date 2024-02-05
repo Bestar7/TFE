@@ -1,17 +1,17 @@
 import type { Component } from 'solid-js';
 
 import styles from '../../App.module.css';
-import ConnectionForm from '../../Components/Form/ConnectionForm'
+import RegisterForm from '../../Components/Form/RegisterForm'
 
-const connectionPage: Component = () => {
+const registerPage: Component = () => {
   return ( 
     <div class={styles.App}>
       <header class={styles.header}>
-        <h2>Connection</h2>
-        <ConnectionForm />
+        <h2>Register</h2>
+        <RegisterForm />
       </header>
     </div> 
   );
 };
 
-export default connectionPage;
+export default registerPage;

@@ -1,19 +1,33 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3000/users'
+const baseUrl = 'http://localhost:3003/users' // TODO get port from process.env.PORT
+import type { User } from '../Models/User'
 // TODO handle error
 
 
-const connectUser = async () => { // TODO send body email password or token
+const connectUser = async (login:string, password:string) => { // TODO send body email password or token
+  
+  console.log("we send this", login, password)
+  
   return await axios
-    .get(baseUrl + '/connect')
+    .post(baseUrl + '/login', {email:login, password:password})
     .then((res: { data: any }) => res.data)
     .catch((err: any) => {
-      console.error("fail connect user")
+      console.error("fail to connect user", err)
       throw err
     })
 }
 
-export default { connectUser }
+const registerUser = async (user: User) => { // TODO send body email password or token
+  return await axios
+    .post(baseUrl + '/register', user)
+    .then((res: { data: any }) => res.data)
+    .catch((err: any) => {
+      console.error("fail to register user")
+      throw err
+    })
+}
+
+export default { connectUser, registerUser }
 
 /*
 const getAll = async () => {
